@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var dbase *gorm.DB
+var db *gorm.DB
 
 func Init() *gorm.DB {
 	dsn := "host=localhost user=postgres password=1234 dbname=crud port=5432"
@@ -20,20 +20,20 @@ func Init() *gorm.DB {
 		log.Fatalln(err)
 	}
 
-	db.AutoMigrate(&models.Users{}, &models.Msgs{})
+	db.AutoMigrate(&models.Users{}, &models.Messages{})
 	return db
 }
 
 func GetDB() *gorm.DB {
-	if dbase == nil {
-		dbase = Init()
+	if db == nil {
+		db = Init()
 		var sleep = time.Duration(1)
-		for dbase == nil {
+		for db == nil {
 			sleep = sleep * 2
 			fmt.Printf("database is unavailable. Wait for %d sec.\n", sleep)
 			time.Sleep(sleep * time.Second)
-			dbase = Init()
+			db = Init()
 		}
 	}
-	return dbase
+	return db
 }
