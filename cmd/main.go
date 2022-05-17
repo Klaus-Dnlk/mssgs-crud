@@ -1,20 +1,10 @@
 package main
 
 import (
+	database "go-workspace/src/mssgs-crud/db/database"
+
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
-
-dsn := "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
-db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-
-db, err := gorm.Open(postgres.New(postgres.Config{
-	DSN: "user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai",
-	PreferSimpleProtocol: true, // disables implicit prepared statement usage
-  }), &gorm.Config{})
-
-
 
 func HomePage(c *gin.Context) {
 	c.JSON(200, gin.H{
@@ -40,10 +30,11 @@ func DelPage(c *gin.Context) {
 	})
 }
 
-
-
 func main() {
 	r := gin.Default()
+
+	database.Init()
+
 	r.GET("/", HomePage)
 	r.POST("/", PostPage)
 	r.PATCH("/", UpdatePage)
