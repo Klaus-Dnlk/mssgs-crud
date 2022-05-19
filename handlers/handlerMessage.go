@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetUsers(db *gorm.DB) gin.HandlerFunc {
+func GetMessages(db *gorm.DB) gin.HandlerFunc {
 
 	return func(c *gin.Context) {
 		var users []Models.User
@@ -21,7 +21,7 @@ func GetUsers(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-func AddUser(db *gorm.DB) gin.HandlerFunc {
+func AddMessage(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var user Models.User
 		if err := c.BindJSON(&user); err != nil {

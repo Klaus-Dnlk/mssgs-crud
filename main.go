@@ -13,8 +13,8 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/home", handlers.GetUsers(db))
-	router.POST("/post", handlers.AddUser(db))
+	router.GET("/users", handlers.GetUsers(db))
+	router.POST("/users", handlers.AddUser(db))
 
 	router.Run()
 }
