@@ -17,9 +17,7 @@ func GetUsers(db *gorm.DB) gin.HandlerFunc {
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
-
 		c.JSON(http.StatusOK, result)
-
 	}
 
 	// return func(c *gin.Context) {
