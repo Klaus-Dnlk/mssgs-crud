@@ -13,11 +13,13 @@ func GetUsers(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var users Models.User
 
-		result, err := db.Find(&users)
+		result, err := db.Find(&users) // cannot initialize 2 variables with 1 values
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
-		c.JSON(http.StatusOK, result)
+		c.JSON(http.StatusOK, gin.H{
+			"qwerqwer: ": result,
+		})
 	}
 
 	// return func(c *gin.Context) {

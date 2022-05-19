@@ -19,9 +19,5 @@ func Connection() *gorm.DB {
 	}
 
 	db.AutoMigrate(&Models.User{}, &Models.Message{})
-	// return db
-}
-
-func GetDB() *gorm.DB {
 	return db
 }

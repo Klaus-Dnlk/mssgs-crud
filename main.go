@@ -1,8 +1,8 @@
 package main
 
 import (
-	"mssg-crud/Handlers"
 	DB "mssgs-crud/db"
+	"mssgs-crud/handlers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,8 +13,8 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/home", Handlers.GetUsers(db))
-	router.POST("/post", Handlers.AddUser(db))
+	router.GET("/home", handlers.GetUsers(db))
+	router.POST("/post", handlers.AddUser(db))
 
 	router.Run()
 }
