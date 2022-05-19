@@ -1,15 +1,11 @@
 package models
 
-type Users struct {
-	User_id   uint   `json: "user_id"`
-	User_name string `json: "user_name"`
+type User struct {
+	id   uint   `json: "id" gorm: "primaryKey`
+	name string `json: "name"`
 }
 
-type Messages struct {
-	Message_id uint   `json: "message_id"`
-	Message    string `json: "message"`
-}
-
-type error struct {
-	Error string `json: "error"`
+type Message struct {
+	id      uint   `json: "message_id"`
+	message string `json: "message"`
 }
