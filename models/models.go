@@ -1,11 +1,11 @@
-package models
+package Models
 
 type User struct {
-	id   uint   `json: "id" gorm: "primaryKey`
-	name string `json: "name"`
+	Id   uint   `json: "id" gorm: "primaryKey`
+	Name string `json: "name"`
 }
 
 type Message struct {
-	id      uint   `json: "message_id"`
-	message string `json: "message"`
+	Id      uint   `json: "message_id"`
+	Message string `json: "message"`
 }
