@@ -11,29 +11,43 @@ import (
 func GetMessages(db *gorm.DB) gin.HandlerFunc {
 
 	return func(c *gin.Context) {
-		var users []Models.User
+		var messages []Models.Message
 
-		err := db.Find(&users).Error // cannot initialize 2 variables with 1 values
+		err := db.Find(&messages).Error
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
-		c.JSON(http.StatusOK, users)
+		c.JSON(http.StatusOK, messages)
 	}
 }
 
 func AddMessage(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var user Models.User
-		if err := c.BindJSON(&user); err != nil {
+		var message Models.Message
+		if err := c.BindJSON(&message); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
-		err := db.Create(&user).Error
+		err := db.Create(&message).Error
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
 
 		c.JSON(http.StatusOK, gin.H{
-			"message": user,
+			"Message content": message,
 		})
+	}
+}
+
+func DeleteMessage(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		id := c.Params.ByName("id")
+
+		var message []Models.Message
+
+		err := db.Delete(&message, id).Error
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		}
+		c.JSON(http.StatusOK, "Message deleted")
 	}
 }
