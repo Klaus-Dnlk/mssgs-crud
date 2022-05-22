@@ -53,7 +53,7 @@ func AddUser(db *gorm.DB) gin.HandlerFunc {
 func DeleteUser(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Params.ByName("id")
-
+		
 		var users []Models.User
 
 		err := db.Delete(&users, id).Error

@@ -25,15 +25,15 @@ func AddMessage(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var message Models.Message
 		if err := c.BindJSON(&message); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			c.JSON(http.StatusBadRequest, gin.H{"error msg fom BIND": err.Error()})
 		}
 		err := db.Create(&message).Error
 		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			c.JSON(http.StatusBadRequest, gin.H{"error msg from Create": err.Error()})
 		}
 
 		c.JSON(http.StatusOK, gin.H{
-			"Message content": message,
+			"Message sent": message,
 		})
 	}
 }

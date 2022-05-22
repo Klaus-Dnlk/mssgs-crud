@@ -1,13 +1,27 @@
 package Models
 
+// type User struct {
+// 	Id   uint   `gorm: "primaryKey"`
+// 	Name string `gorm: "unique"`
+// }
+
+// type Message struct {
+// 	Id          uint `gorm: "primaryKey"`
+// 	SenderId    uint `gorm:"foreignKey: sender_fk; references: Id"`
+// 	RecipientId uint `gorm:"foreignKey: recipient_fk; references: Id"`
+// 	Message     string 
+// }
+
+
+
 type User struct {
-	Id   uint   `json: "user_id" gorm: "primaryKey"`
-	Name string `json: "name"`
+	Id   uint   `gorm: "primaryKey"`
+	Name string `gorm: "unique"`
 }
 
 type Message struct {
-	Id          uint   `json: "message_id" gorm: "primaryKey"`
-	SenderId    uint   `json: "sender_id" gorm:"foreignKey: sender_fk; referencs: Id"`
-	RecipientId uint   `json: "recipient_id" gorm:"foreignKey: recipient_fk; referencs: Id"`
-	Message     string `json: "message"`
+	Id          uint `gorm: "primaryKey"`
+	SenderId    uint `gorm:"foreignKey: sender_fk; references: Name"`
+	RecipientId uint `gorm:"foreignKey: recipient_fk; references: Name"`
+	Message     string 
 }

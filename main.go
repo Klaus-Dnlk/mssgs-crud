@@ -19,7 +19,7 @@ func main() {
 
 	router.GET("/messages", handlers.GetMessages(db))
 	router.POST("/messages", handlers.AddMessage(db))
-	router.DELETE("/message/:id", handlers.DeleteMessage(db))
+	router.DELETE("/messages/:id", handlers.DeleteMessage(db))
 
 	router.Run()
 }
