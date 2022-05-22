@@ -21,7 +21,7 @@ type User struct {
 
 type Message struct {
 	Id          uint `gorm: "primaryKey"`
-	SenderId    uint `gorm:"foreignKey: sender_fk; references: Name"`
-	RecipientId uint `gorm:"foreignKey: recipient_fk; references: Name"`
+	SenderId    string `gorm:"foreignKey: sender_fk; references: Name"`
+	RecipientId string `gorm:"foreignKey: recipient_fk; references: Name"`
 	Message     string 
 }
