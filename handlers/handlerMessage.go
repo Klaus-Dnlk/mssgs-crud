@@ -32,6 +32,7 @@ func AddMessage(db *gorm.DB) gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error msg from Create": err.Error()})
 		}
 
+		
 		c.JSON(http.StatusOK, gin.H{
 			"Message sent": message,
 		})
