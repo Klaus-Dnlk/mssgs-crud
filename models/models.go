@@ -1,27 +1,5 @@
 package Models
 
-// import (
-// 	"gorm.io/gorm"
-// )
-// MODEL WITH ID REFERENCE
-
-// type User struct {
-// 	Id   uint   `gorm: "primaryKey"`
-// 	Name string `gorm: "unique"`
-// }
-
-// type Message struct {
-// 	Id          uint `gorm: "primaryKey"`
-// 	SenderId    uint `gorm:"foreignKey: sender_fk; references: Id"`
-// 	RecipientId uint `gorm:"foreignKey: recipient_fk; references: Id"`
-// 	Message     string 
-// }
-
-// -----------------------------------
-
-
-// MODEL WITH NAME REFERENCE
-
 
 type User struct {
 	UserId   	uint   `gorm:"primary_key"`

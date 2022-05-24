@@ -20,7 +20,7 @@ func GetUsers(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-func GetUserById(db *gorm.DB) gin.HandlerFunc {
+func GetUserByIdOrName(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var user []Models.User
 		id := c.Params.ByName("id")
